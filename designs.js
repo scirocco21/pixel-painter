@@ -11,10 +11,12 @@ form.addEventListener('submit', function(e){
 
 function makeGrid() {
   const canvas = document.getElementById("pixelCanvas");
-  for (let i = 0; i < 3; i++) {
+  let height = parseInt(document.getElementById("inputHeight").value);
+  let width = parseInt(document.getElementById("inputWidth").value);
+  for (let i = 0; i < height; i++) {
     let row = document.createElement("tr");
     canvas.appendChild(row)
-    for (let j = 0; j < 3; j++) {
+    for (let j = 0; j < width; j++) {
       let cell = document.createElement("td");
       canvas.appendChild(cell)
     }

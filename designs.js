@@ -1,14 +1,19 @@
-// Select color input
-// Select size input
-
-// When size is submitted by the user, call makeGrid()
-
 const form = document.getElementById("sizePicker");
+// hijack submit event to create grid
 form.addEventListener('submit', function(e){
   e.preventDefault();
   makeGrid();
 })
-
+// grab initial color value
+let color = document.getElementById("colorPicker").value;
+// listen to any change in input value
+document.getElementById("colorPicker").addEventListener("change", function(e) {
+  color = e.target.value;
+})
+function updateColor(cell, color) {
+  cell.bgColor = color;
+}
+// main function for drawing grid and attaching event listener to cells
 function makeGrid() {
   const canvas = document.getElementById("pixelCanvas");
   let height = parseInt(document.getElementById("inputHeight").value);
@@ -18,9 +23,10 @@ function makeGrid() {
     canvas.appendChild(row)
     for (let j = 0; j < width; j++) {
       let cell = document.createElement("td");
+      cell.addEventListener('mousedown', function() {
+        updateColor(cell, color);
+      });
       canvas.appendChild(cell)
     }
   }
-// Your code goes here!
-
 }

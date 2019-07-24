@@ -26,6 +26,11 @@ function makeGrid() {
       cell.addEventListener('mousedown', function() {
         updateColor(cell, color);
       });
+      cell.onmousemove = function(e) {
+        if(e.buttons == 1) {
+          updateColor(cell, color)
+        }
+    }
       canvas.appendChild(cell)
     }
   }

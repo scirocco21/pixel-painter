@@ -16,6 +16,11 @@ function updateColor(cell, color) {
 // main function for drawing grid and attaching event listener to cells
 function makeGrid() {
   const canvas = document.getElementById("pixelCanvas");
+  let row = canvas.lastElementChild;
+  while (row) { 
+    canvas.removeChild(row); 
+    row = canvas.lastElementChild; 
+} 
   let height = parseInt(document.getElementById("inputHeight").value);
   let width = parseInt(document.getElementById("inputWidth").value);
   for (let i = 0; i < height; i++) {
